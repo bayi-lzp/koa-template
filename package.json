@@ -1,0 +1,25 @@
+{
+  "name": "koa-template",
+  "version": "0.1.0",
+  "author": "bayi",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "pm2 start ecosystem.config.js --env dev",
+    "test": "pm2 start ecosystem.config.js --env test",
+    "pro": "pm2 start ecosystem.config.js --env pro",
+    "logs": "pm2 logs",
+    "stop": "pm2 stop ecosystem.config.js"
+  },
+  "dependencies": {
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-helmet": "^4.1.0",
+    "koa-jwt": "^3.5.1",
+    "koa-router": "^7.4.0",
+    "koa-static-cache": "^5.1.2",
+    "koa2-cors": "^2.0.6",
+    "log4js": "^3.0.6",
+    "mongoose": "^5.5.5"
+  }
+}
