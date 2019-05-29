@@ -7,7 +7,38 @@
 
 下面的目录是该模板基础目录结构，后面的章节会对每一个目录的配置进行介绍，让大家在开发中对项目的结构比较清晰，出了问题容易定位。
 
-![](https://user-gold-cdn.xitu.io/2019/5/29/16b018c87c4eed5e?w=298&h=659&f=png&s=28933)
+
+```
+├─.gitignore                // 忽略文件配置
+├─app.js                    // 应用入口
+├─config.js                 // 公共配置文件
+├─ecosystem.config.js       // pm2配置文件
+├─package.json              // 依赖文件配置
+├─README.md                 // README.md文档
+├─routes                    // 路由
+|   ├─private.js                // 校验接口
+|   └public.js                  // 公开接口
+├─models                    // 数据库配置及模型
+|   ├─index.js                  // 数据库配置
+|   └user.js                    // 用户的schema文件
+├─middlewares               // 中间件
+|      ├─cors.js                // 跨域中间件
+|      ├─jwt.js                 // jwt中间件
+|      ├─logger.js              // 日志打印中间件
+|      └response.js             // 响应及异常处理中间件
+├─logs                      // 日志目录
+|  ├─koa-template.log
+|  └koa-template.log-2019-05-28
+├─lib                       // 工具库
+|  ├─error.js                   // 异常处理
+|  └mongoDB.js                  // mongoDB配置
+├─controllers               // 操作数据库及业务逻辑
+|      ├─index.js               // 配置
+|      ├─login.js               // 登录
+|      └test.js                 // 测试
+├─bin                       // 启动目录
+|  └www                         // 启动文件配置
+```
 #### bin文件
 
 bin文件目录中，只有一个文件，即为www,因为我们后端的项目基本上是在Linux上进行运行的，其实我们不必去担心文件的后缀是什么，只需知道该文件是可执行文件还是不可执行文件就行了。这个文件有什么用呢？其实我们这个文件是用来部署的时候可以启动我们一整个后端程序，也就是我们前端中的集成的运行环境。我们的运行、关闭、重启都在这文件进行即可。基本代码如下：
