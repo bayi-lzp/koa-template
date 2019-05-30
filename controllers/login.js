@@ -2,12 +2,19 @@
 
 const jwt = require('jsonwebtoken')
 const config = require('../config')
-const User = require('../models/index').getModel('user')
+const userServices = require('../services').user
+const { InvalidQueryError } = require('../lib/error')
 const login = {}
-
 login.login = async (ctx, next) => {
+    console.log(userServices)
     const {userName, password} = ctx.request.body
-    const user = await User.findOne({userName: userName})
+    if (!userName || !password) {
+        throw new InvalidQueryError()
+    }
+    const user = await userServices.login({
+        userName: userName,
+        password: password
+    })
     if (!user) {
         ctx.result = ''
         ctx.msg = '用户不存在'
